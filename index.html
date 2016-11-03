@@ -3,46 +3,121 @@
 <head>
   <title>blueline- grid generator </title>
 <style>
-@fontface {
+@font-face {
   font-family: light;
   src: url('fonts/light.otf');
 }
-@fontface {
+@font-face {
   font-family: book;
-  src: url('fonts/light.otf');
+  src: url('fonts/book.otf');
 }
-@fontface {
+@font-face {
   font-family: heavy;
-  src: url('fonts/light.otf');
+  src: url('fonts/heavy.otf');
 }
-@fontface {
+@font-face {
   font-family: black;
-  src: url('fonts/light.otf');
+  src: url('fonts/black.otf');
+}
+@font-face {
+  font-family: u-bold;
+  src: url('fonts/u-bold.otf');
+}
+@font-face {
+  font-family: u-bold-c;
+  src: url('fonts/u-bold-c.otf');
+}
+@font-face {
+  font-family: u-std;
+  src: url('fonts/u-std.otf');
+}
+@font-face {
+  font-family: u-light;
+  src: url('fonts/u-light.otf');
 }
 body {
   padding: 0px;
   font-size: 10px;
 }
 h1 {
-  font-family: light;
-  font-size: 2.6em;
+  font-family: black;
+  font-size: 4.6em;
   color: #333399;
+  display: inline-block;
+
 }
 h2 {
-  letter-spacing: 4px;
-  font-size: 1.8em;
-  font-family: heavy;
+  /*letter-spacing: 2px;*/
+  font-size: 1.6em;
+  font-family: u-light;
+
 }
 p {
-  font-size: 1.4em;
+  font-size: 1.6em;
   color: black;
+  display: inline;
+  font-family: u-light;
+}
+button {
+  display: inline;
+  border-radius: 5px;
+  color: black;
+  border: 1px solid black;
+  padding: 4px 6px;
+  margin-left: 5px;
+  background-color: white;
+}
+#box {
+  background-color: white;
+  width: 300px;
+  padding: 10px;
+  margin: 20vh 0 0 40vw;
+  border-radius:  5px;
+  border: 0px solid #333399;
+}
+ul {
+  list-style: none;
+}
+li {
+  padding: 2px 0 12px 0;
+}
+
+#last-list-item {
+  padding-bottom: 8px;
+}
+#logo {
+  margin-top: 8vh;
+  margin-left: 8vw;
+  border-bottom: 6px solid #333399;
+  transition: border-bottom 0.4s ease-out 1s;
+  -webkit-transition: border-bottom 0.4s ease-out 1s;
+}
+#logo:hover {
+
+}
+#tagline {
+  margin-top: 0px;
+  margin-left: 8vw;
+  color: #95a5a6;
+  font-size: 1.4em;
+  letter-spacing: 1.5px;
 }
 </style>
 </head>
 <body>
-  <h1> blueline </h1>
+  <h1 id="logo"> blueline </h1>
+  <div>
 
-  <h2> make a grid </h2>
+  <h2 id="tagline"> CONSTRUCT A GRID. </h2>
+<div id="box">
+  <ul>
+    <li> <p> Columns: <input type="range"></input><p> </li>
+    <li> <p> Gutters:<p> </li>
+    <li id="last-list-item"> <p> Annotations:<p> <button>pixel </button> <button>viewWidth </button> </li>
+  </ul>
+</div>
+
+
 </body>
 
 </html>
