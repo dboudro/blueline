@@ -71,9 +71,10 @@ button {
   background-color: white;
   width: 300px;
   padding: 10px;
-  margin: 20vh 0 0 40vw;
+  margin: 10vh 0 0 40vw;
   border-radius:  5px;
-  border: 0px solid #333399;
+  border: 2px solid #333399;
+  position: fixed;
 }
 ul {
   list-style: none;
@@ -84,6 +85,9 @@ li {
 
 #last-list-item {
   padding-bottom: 8px;
+}
+#logo-container {
+  position: fixed;
 }
 #logo {
   margin-top: 8vh;
@@ -102,21 +106,90 @@ li {
   font-size: 1.4em;
   letter-spacing: 1.5px;
 }
+.column {
+  width: 140px;
+  height: 100vh;
+  border: 1px solid blue;
+  display: table;
+  float: left;
+}
+#container {
+  border: 1px solid purple;
+  height: 100vh;
+}
 </style>
 </head>
 <body>
+  <div id="container">
+    <div id="logo-container">
   <h1 id="logo"> blueline </h1>
-  <div>
 
   <h2 id="tagline"> CONSTRUCT A GRID. </h2>
+</div>
 <div id="box">
   <ul>
-    <li> <p> Columns: <input type="range"></input><p> </li>
+    <li> <button onclick="draw()" id="drawbutton">draw a col</button>
+    <button onclick="remove()" id="removebutton">remove a col</button> </li>
     <li> <p> Gutters:<p> </li>
     <li id="last-list-item"> <p> Annotations:<p> <button>pixel </button> <button>viewWidth </button> </li>
+      <li>
+      <!-- </p> <input type="range" min="0" max="12" value="0" id="slider"></input> <p id="slider-range"></p> -->
+    </li>
   </ul>
 </div>
+</div>
 
+
+
+
+
+<script>
+  var drawbutton = document.getElementById('drawbutton');
+  var removebutton = document.getElementById('removebutton');
+  // slider range
+  var slider = document.getElementById('slider');
+  var result = document.getElementById('slider-range');
+
+
+
+  function draw() {
+    console.log('running');
+    var col = document.createElement("DIV");
+    col.className = 'column'
+    var container = document.getElementById('container');
+    container.appendChild(col);
+  }
+  function remove() {
+      var container = document.getElementById('container');
+      var col = document.getElementsByClassName('column');
+      container.removeChild(col[0]);
+  }
+  slider.addEventListener("input", function() {
+    result.innerHTML = slider.value;
+    // remove all columns
+      console.log('input')
+    colCounter = 0;
+    var allCol = document.getElementsByClassName('column');
+    if (allCol.length != 0 ) {
+        console.log('running if')
+          allCol.removeChild()
+    }
+
+
+    // add all columns
+    // var colCounter = slider.value;
+    // for(i = colCounter; i >=0; i--) {
+    //   var coldiv = document.createElement("DIV");
+    //   coldiv.className = 'column'
+    //   var container = document.getElementById('container');
+    //   container.appendChild(coldiv);
+    //
+    // }
+
+
+}, false);
+
+</script>
 
 </body>
 
