@@ -63,10 +63,17 @@ button {
   display: inline;
   border-radius: 5px;
   color: black;
-  border: 1px solid black;
+  border: 1px solid #333399;
   padding: 4px 6px;
   margin-left: 5px;
   background-color: white;
+}
+button:hover {
+  background-color: #333399;
+  color: white;
+}
+button:focus {
+  
 }
 #box {
   background-color: white;
@@ -108,7 +115,6 @@ li {
   letter-spacing: 1.5px;
 }
 .column {
-  width: 140px;
   height: 100vh;
   border: 1px solid blue;
   display: table;
@@ -150,13 +156,21 @@ li {
   // slider range
   var slider = document.getElementById('slider');
   var result = document.getElementById('slider-range');
+    var colNum = 1;
+
 
 
 
   function draw() {
-    console.log('running');
+    console.log('running draw');
+    var colWidth = (window.innerWidth) / colNum;
+    var allCol = document.getElementsByClassName('column');
     var col = document.createElement("DIV");
     col.className = 'column'
+    colNum++;
+    console.log(colWidth);
+    console.log(colNum);
+    allCol.style.width = colWidth + 'px';
     var container = document.getElementById('container');
     container.appendChild(col);
   }
@@ -165,30 +179,33 @@ li {
       var col = document.getElementsByClassName('column');
       container.removeChild(col[0]);
   }
-  slider.addEventListener("input", function() {
-    result.innerHTML = slider.value;
-    // remove all columns
-      console.log('input')
-    colCounter = 0;
-    var allCol = document.getElementsByClassName('column');
-    if (allCol.length != 0 ) {
-        console.log('running if')
-          allCol.removeChild()
-    }
 
 
-    // add all columns
-    // var colCounter = slider.value;
-    // for(i = colCounter; i >=0; i--) {
-    //   var coldiv = document.createElement("DIV");
-    //   coldiv.className = 'column'
-    //   var container = document.getElementById('container');
-    //   container.appendChild(coldiv);
-    //
-    // }
-
-
-}, false);
+  // slider code
+//   slider.addEventListener("input", function() {
+//     result.innerHTML = slider.value;
+//     // remove all columns
+//       console.log('input')
+//     colCounter = 0;
+//     var allCol = document.getElementsByClassName('column');
+//     if (allCol.length != 0 ) {
+//         console.log('running if')
+//           allCol.removeChild()
+//     }
+//
+//
+//     // add all columns
+//     // var colCounter = slider.value;
+//     // for(i = colCounter; i >=0; i--) {
+//     //   var coldiv = document.createElement("DIV");
+//     //   coldiv.className = 'column'
+//     //   var container = document.getElementById('container');
+//     //   container.appendChild(coldiv);
+//     //
+//     // }
+//
+//
+// }, false);
 
 </script>
 
