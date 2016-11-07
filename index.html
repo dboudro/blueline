@@ -38,6 +38,7 @@
 }
 body {
   padding: 0px;
+  margin: 0px;
   font-size: 10px;
 }
 h1 {
@@ -73,7 +74,7 @@ button:hover {
   color: white;
 }
 button:focus {
-  
+  outline: 0;
 }
 #box {
   background-color: white;
@@ -121,7 +122,7 @@ li {
   float: left;
 }
 #container {
-  border: 1px solid purple;
+  border: 0px solid purple;
   height: 100vh;
 }
 </style>
@@ -163,18 +164,27 @@ li {
 
   function draw() {
     console.log('running draw');
-    var colWidth = (window.innerWidth) / colNum;
+    var colWidth = (window.innerWidth / colNum) - 2;
     var allCol = document.getElementsByClassName('column');
-    var col = document.createElement("DIV");
-    col.className = 'column'
+    var newCol = document.createElement("DIV");
+    newCol.className = 'column'
+    newCol.style.width = colWidth + 'px';
     colNum++;
     console.log(colWidth);
     console.log(colNum);
-    allCol.style.width = colWidth + 'px';
+    for (i = 0; i < allCol.length; i++) {
+      allCol[i].style.width = colWidth + 'px';
+    }
     var container = document.getElementById('container');
-    container.appendChild(col);
+    container.appendChild(newCol);
   }
   function remove() {
+    colNum--;
+    var colWidth = (window.innerWidth / colNum) - 2;
+    var allCol = document.getElementsByClassName('column');
+    for (i = 0; i < allCol.length; i++) {
+      allCol[i].style.width = colWidth + 'px';
+    }
       var container = document.getElementById('container');
       var col = document.getElementsByClassName('column');
       container.removeChild(col[0]);
