@@ -115,12 +115,6 @@ li {
   font-size: 1.4em;
   letter-spacing: 1.5px;
 }
-.column {
-  height: 100vh;
-  border: 1px solid blue;
-  display: table;
-  float: left;
-}
 #container {
   border: 0px solid purple;
   height: 100vh;
@@ -128,7 +122,6 @@ li {
 </style>
 </head>
 <body>
-  <div id="container">
     <div id="logo-container">
   <h1 id="logo"> blueline </h1>
 
@@ -145,6 +138,7 @@ li {
     </li>
   </ul>
 </div>
+  <div id="container">
 </div>
 
 
@@ -157,18 +151,25 @@ li {
   // slider range
   var slider = document.getElementById('slider');
   var result = document.getElementById('slider-range');
-    var colNum = 1;
 
 
 
 
   function draw() {
     console.log('running draw');
-    var colWidth = (window.innerWidth / colNum) - 2;
+    var allGutters = document.getElementsByClassName('gutter');
+    var gutterNum = allGutters.length;
+    console.log(gutterNum);
     var allCol = document.getElementsByClassName('column');
+    var colNum = allCol.length + 1;
+    var colWidth = (window.innerWidth / colNum) - 2;
     var newCol = document.createElement("DIV");
     newCol.className = 'column'
     newCol.style.width = colWidth + 'px';
+    newCol.style.height = 100 + 'vh';
+    newCol.style.border = "1px solid blue";
+    newCol.style.display = "table";
+    newCol.style.float = "left";
     colNum++;
     console.log(colWidth);
     console.log(colNum);
@@ -190,35 +191,7 @@ li {
       container.removeChild(col[0]);
   }
 
-
-  // slider code
-//   slider.addEventListener("input", function() {
-//     result.innerHTML = slider.value;
-//     // remove all columns
-//       console.log('input')
-//     colCounter = 0;
-//     var allCol = document.getElementsByClassName('column');
-//     if (allCol.length != 0 ) {
-//         console.log('running if')
-//           allCol.removeChild()
-//     }
-//
-//
-//     // add all columns
-//     // var colCounter = slider.value;
-//     // for(i = colCounter; i >=0; i--) {
-//     //   var coldiv = document.createElement("DIV");
-//     //   coldiv.className = 'column'
-//     //   var container = document.getElementById('container');
-//     //   container.appendChild(coldiv);
-//     //
-//     // }
-//
-//
-// }, false);
-
 </script>
-
 </body>
 
 </html>
