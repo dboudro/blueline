@@ -36,6 +36,10 @@
   font-family: u-light;
   src: url('fonts/u-light.otf');
 }
+::selection {
+  background: #333399;
+  color: white;
+}
 body {
   padding: 0px;
   margin: 0px;
@@ -72,6 +76,7 @@ button {
 button:hover {
   background-color: #333399;
   color: white;
+  cursor: pointer;
 }
 button:focus {
   outline: 0;
@@ -129,6 +134,7 @@ li {
 </div>
 <div id="box">
   <ul>
+    <li> <input type="text" value="0" id="input" oninput="drawCols()"></input> <p> </p>
     <li> <button onclick="draw()" id="drawbutton">draw a col</button>
     <button onclick="remove()" id="removebutton">remove a col</button> </li>
     <li> <p> Gutters:<p> </li>
@@ -161,9 +167,14 @@ li {
     var gutterNum = allGutters.length;
     console.log(gutterNum);
     var allCol = document.getElementsByClassName('column');
-    var colNum = allCol.length + 1;
+    var colNum = allCol.length;
     var colWidth = (window.innerWidth / colNum) - 2;
     var newCol = document.createElement("DIV");
+
+    //code for input box
+    var input = document.getElementById('input');
+
+    // apply styles to new column
     newCol.className = 'column'
     newCol.style.width = colWidth + 'px';
     newCol.style.height = 100 + 'vh';
@@ -171,7 +182,8 @@ li {
     newCol.style.display = "table";
     newCol.style.float = "left";
     // newCol.style.paddingRight = "16px";
-    colNum++;
+    colNum = 0;
+    colNum = input.value;
     console.log(colWidth);
     console.log(colNum);
     for (i = 0; i < allCol.length; i++) {
@@ -180,6 +192,12 @@ li {
     var container = document.getElementById('container');
     container.appendChild(newCol);
   }
+  function drawCols() {
+      colNum = this.value;
+      draw();
+  }
+
+
   function remove() {
     colNum--;
     var colWidth = (window.innerWidth / colNum) - 2;
